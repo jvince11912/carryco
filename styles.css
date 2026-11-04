@@ -461,6 +461,8 @@ a {
   overflow: hidden;
   background: #fff;
   border: 1px solid #ebe7df;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(18,49,74,.08);
   color: var(--navy);
   cursor: pointer;
   transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
