@@ -590,8 +590,8 @@ a {
   font-weight: 700;
   color: var(--navy);
 }
-.email-modal-panel input {
-  height: 52px;
+.email-modal-panel input,
+.email-modal-panel textarea {
   margin-bottom: 22px;
   padding: 0 14px;
   border: 1px solid #cbd6dc;
@@ -599,7 +599,16 @@ a {
   font: inherit;
   color: var(--ink);
 }
-.email-modal-panel input:focus {
+.email-modal-panel input {
+  height: 52px;
+}
+.email-modal-panel textarea {
+  min-height: 110px;
+  padding-top: 12px;
+  resize: vertical;
+}
+.email-modal-panel input:focus,
+.email-modal-panel textarea:focus {
   border-color: var(--blue);
   outline: 3px solid rgba(31,85,116,.12);
 }
