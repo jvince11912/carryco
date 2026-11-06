@@ -68,6 +68,23 @@ a {
   letter-spacing: 2.4px;
   margin-top: 5px;
 }
+
+.brand-logo {
+  width: 58px;
+  height: 58px;
+}
+
+/* hide white brand-logo color for phone modeor tablet */
+.brand-logo-white {
+  display: none;
+}
+
+/* show dark brand-logo for phone / tablet mode */
+.brand-logo-dark {
+    display: block;
+}
+
+
 .main-nav {
   display: flex;
   gap: 34px;
@@ -713,6 +730,18 @@ footer div {
   background: var(--navy);
   margin: 5px;
 }
+
+/* show logo display based on screen width > 901  , (max-width: 900px) {*/
+@media (min-width: 901px) {
+  .brand-logo-dark {
+    display: none;
+  }
+
+  .brand-logo-white {
+    display: block;
+  }
+}
+
 @media(min-width:901px) {
   .site-header {
     background: linear-gradient(90deg, var(--navy-dark) 0%, var(--navy) 45%, var(--blue) 100%);
@@ -764,6 +793,10 @@ footer div {
   .menu-toggle {
     display: block;
     margin-left: auto;
+  }
+  .brand-logo {
+    width: 48px;
+    height: 48px;
   }
   .header-call {
     display: none;
