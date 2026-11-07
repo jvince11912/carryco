@@ -1,3 +1,4 @@
+
 const menuButton = document.querySelector('.menu-toggle');
 const navigation = document.querySelector('.main-nav');
 
@@ -60,12 +61,16 @@ document.querySelector('.hero').addEventListener('mouseleave', startAutoplay);
 showSlide(0);
 startAutoplay();
 
+
+/* EMAIL MODAL */
 const emailModal = document.querySelector('#email-modal');
 const emailRequestButton = document.querySelector('#email-request-button');
 const emailRequestForm = document.querySelector('#email-request-form');
 const formStatus = document.querySelector('#form-status');
 const requestNameInput = document.querySelector('#request-name');
 let lastFocusedElement = null;
+
+
 
 function openEmailModal() {
   lastFocusedElement = document.activeElement;
@@ -94,8 +99,8 @@ document.querySelectorAll('[data-modal-close]').forEach((button) => {
 emailRequestForm.addEventListener('submit', (event) => {
   event.preventDefault();
   const name = requestNameInput.value.trim();
-  formStatus.textContent = `Thank you${name ? `, ${name}` : ''}. Your request is ready to be submitted.`;
-  window.setTimeout(closeEmailModal, 900);
+  //formStatus.textContent = `Thank you${name ? `, ${name}` : ''}. Your request is ready to be submitted.`;
+  //window.setTimeout(closeEmailModal, 900);
 });
 
 document.addEventListener('keydown', (event) => {
@@ -103,3 +108,60 @@ document.addEventListener('keydown', (event) => {
     closeEmailModal();
   }
 });
+
+ function contact(event) {
+  event.preventDefault();
+  const loading = document.querySelector(".modal__overlay--loading");
+  const success = document.querySelector(".modal__overlay--success");
+  loading.classList += " modal__overlay--visible";
+  const templateParams = {
+      user_name: event.target.user_name.value,
+      user_email: event.target.user_email.value,
+      user_phone: event.target.user_phone.value,
+      message: event.target.message.value
+    };
+
+  emailjs
+        .sendForm(
+          "service_qz8lcok", //"service_2ch4lu9", //"service_qz8lcok",
+          "template_48t6j6q", //"template_xmpc19u", //"template_48t6j6q", 
+          event.target,
+          "jbLT1B_NRbaJX_8Av", //"NbrtJNH_VyntV6zw5", //"jbLT1B_NRbaJX_8Av"
+     ) 
+ 
+    .then(() => { 
+       loading.classList.remove("modal__overlay--visible"); 
+       success.classList += " modal__overlay--visible";
+       waitForUserActivity(success);       
+       emailRequestForm.reset(); 
+    })
+    
+    .catch((error) => {
+      console.log(error)
+      loading.classList.remove("modal__overlay--visible");
+      alert( 
+        "The email service is temporarily unavailable : " + (error.message) + " . Please contact me directly on carryco888@yahoo.com"
+      );
+      emailRequestForm.reset(); 
+    });
+
+}
+
+/* refactor this function  */
+function waitForUserActivity(element) {
+  const hideOverlay = () => {
+    element.classList.remove("modal__overlay--visible");
+
+    document.removeEventListener("pointerdown", hideOverlay);
+    document.removeEventListener("keydown", hideOverlay);
+    document.removeEventListener("touchstart", hideOverlay);
+    document.removeEventListener("pointermove", hideOverlay);
+  };
+
+  document.addEventListener("pointerdown", hideOverlay, { once: true });
+  document.addEventListener("keydown", hideOverlay, { once: true });
+  document.addEventListener("touchstart", hideOverlay, { passive: true, once: true });
+  document.addEventListener("pointermove", hideOverlay, { passive: true, once: true });
+
+  
+}

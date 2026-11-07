@@ -12,6 +12,20 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous">
+
+  /* include link=stylesheet and js script below to refactor */
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@5/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+         (function(){
+            emailjs.init({
+                publicKey: "jbLT1B_NRbaJX_8Av", //"NbrtJNH_VyntV6zw5", // "jbLT1B_NRbaJX_8Av",
+            });
+        })();
+    </script>
+
 </head>
 <body>
   <header class="site-header" id="top">
@@ -152,23 +166,25 @@
       <button class="modal-close" type="button" aria-label="Close request form" data-modal-close>×</button>
       <p class="eyebrow navy">Request transportation</p>
       <h2 id="email-modal-title">How can we reach you?</h2>
-      <form id="email-request-form">
-          <div class="honeypot-container">
-          <label for="website">Leave this field blank if you are human:</label>
-          <input type="text" id="website" name="website" autocomplete="off"  tabindex="-1">
+      <form id="email-request-form" onsubmit="contact(event)">
+          <!-- refactor this div along with above onsubmit="contact(event) -->
+          <div class="honeypot-container"> 
+              <label for="website">Leave this field blank if you are human:</label>
+              <input type="text" id="website" name="website" autocomplete="off"  tabindex="-1">
           </div> 
 
-        <label for="request-name">Name</label>
-        <input id="request-name" name="name" type="text" autocomplete="name" required>
+        <!---- all name=user_** to match at email js fields  -->
+        <label for="request-name">Your Name</label>
+        <input id="request-name" name="user_name" type="text" autocomplete="name" required>
 
-        <label for="request-email">Email</label>
-        <input id="request-email" name="email" type="email" autocomplete="email" required>
+        <label for="request-email">Your Email</label>
+        <input id="request-email" name="user_email" type="email" autocomplete="email" required>
 
-        <label for="request-phone">Telephone Number</label>
-        <input id="request-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required>
+        <label for="request-phone">Your Telephone Number</label>
+        <input id="request-phone" name="user_phone" type="tel" autocomplete="tel" inputmode="tel" required>
 
         <label for="transportation-needs">Tell us your transportation needs</label>
-        <textarea id="transportation-needs" name="transportationNeeds" rows="4" required></textarea>
+        <textarea id="transportation-needs" name="message" rows="4" required></textarea>
 
         <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
         <div class="modal-actions">
@@ -176,6 +192,13 @@
           <button class="button modal-cancel" type="button" data-modal-close>Cancel</button>
         </div>
       </form>
+      <!-- include 2 divs below to refactor -->
+       <div class="modal__overlay modal__overlay--loading">
+              <i class="fas fa-spinner"></i>
+        </div>
+        <div class="modal__overlay modal__overlay--success">
+            Thanks for the message looking forward to speaking with you soon !
+        </div>
     </aside>
   </div>
 
