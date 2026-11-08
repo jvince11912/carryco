@@ -252,6 +252,12 @@ a {
   border: 1px solid rgba(255,255,255,.75);
   color: #fff;
 }
+.button-secondary svg {
+  width: 2em;
+  height: 2em;
+  flex: 0 0 1em;
+  fill: currentColor; 
+}
 .availability {
   position: absolute;
   right: max(24px,calc((100vw - 1132px)/2));

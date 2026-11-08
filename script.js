@@ -162,6 +162,26 @@ function waitForUserActivity(element) {
   document.addEventListener("keydown", hideOverlay, { once: true });
   document.addEventListener("touchstart", hideOverlay, { passive: true, once: true });
   document.addEventListener("pointermove", hideOverlay, { passive: true, once: true });
-
-  
 }
+
+const heroContact = document.querySelector('#hero-call-or-text');
+const heroContactLabel = heroContact?.querySelector('.hero-contact-label');
+const phoneBreakpoint = window.matchMedia('(max-width: 900px)');
+
+function updateHeroContactLink() {
+  if (!heroContact || !heroContactLabel) return;
+
+  if (phoneBreakpoint.matches) {
+    heroContact.href =
+      //'sms:+17143174740?body=Hello%2C%20I%20would%20like%20to%20request%20a%20ride.';
+      'sms://+15623203552?body=Hello%2C%20I%20would%20like%20to%20request%20a%20ride.';
+    heroContactLabel.textContent = 'Text (562) 320-3552';
+  } else {
+    heroContact.href = 'tel:+17143174740';
+    heroContactLabel.textContent = 'Call (714) 317-4740';
+  }
+}
+
+
+updateHeroContactLink();
+phoneBreakpoint.addEventListener('change', updateHeroContactLink);
