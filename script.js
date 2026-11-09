@@ -177,8 +177,8 @@ function updateHeroContactLink() {
       'sms://+15623203552?body=Hello%2C%20I%20would%20like%20to%20request%20a%20ride.';
     heroContactLabel.textContent = 'Text (562) 320-3552';
   } else {
-    heroContact.href = 'tel:+17143174740';
-    heroContactLabel.textContent = 'Call (714) 317-4740';
+    heroContact.href =  'sms://+15623203552?body=Hello%2C%20I%20would%20like%20to%20request%20a%20ride.';
+    heroContactLabel.textContent = 'Text (714) 317-4740';
   }
 }
 

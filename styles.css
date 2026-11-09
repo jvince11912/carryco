@@ -115,7 +115,9 @@ a {
   padding-left: 25px;
   color: var(--navy);
   display: flex;
-  flex-direction: column;
+  /* flex-direction: row; */
+  align-items: center;
+  gap: 8px;
 }
 .header-call span {
   font-size: 11px;
@@ -131,6 +133,7 @@ a {
   width: 1em;
   height: 1em;
   flex: 0 0 1em;
+  fill: currentColor;
 }
 .menu-toggle {
   display: none;
@@ -589,6 +592,24 @@ a {
   font-family: inherit;
   cursor: pointer;
 }
+#cta-call-or-text {
+    border: 1px solid rgba(255, 255, 255, .6);
+    color: #fff;
+    background: transparent;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+#cta-call-or-text svg {
+  width: 2em;
+  height: 2em;
+  fill: #fff;
+  flex: 0 0 1em;
+}
+
+#cta-call-or-text .cta-contact-label {
+  color: #fff;
+}
 
 /* EMAIL MODAL */
 .email-modal {
@@ -969,9 +990,10 @@ footer div {
     max-width: 310px;
   }
   .availability {
-    left: 20px;
+    left: 50%;
     right: auto;
     bottom: 20px;
+    transform: translateX(-50%);
   }
   .carousel-dots {
     bottom: 92px;
