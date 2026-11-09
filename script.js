@@ -181,7 +181,7 @@ const ctaPhoneNumberSMSValue = 'Text (714) 317-4740';
 const phoneBreakpoint = window.matchMedia('(max-width: 900px)');
 
 function updateHeroContactLink() {
-  if (!heroContact || !heroContactLabel || !ctaCallOrText) return;
+  if (!heroContactHref || !headerContactHref || !ctaContactHref) return;
 
   if (phoneBreakpoint.matches) {
      headerContactHref.href = ctaPhoneHrefSMSValue;
