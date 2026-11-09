@@ -173,7 +173,7 @@ const heroContactLabel = document.querySelector('.hero-contact-label');
 const ctaContactLabel = document.querySelector('.cta-contact-label'); 
 
 const ctaPhoneHrefTelValue =  '';
-const ctaPhoneNumberCallValue = 'Call (714) 317-4740';
+const ctaPhoneNumberCallValue = '(714) 317-4740';
 
 const ctaPhoneHrefSMSValue =  'sms:+17143174740?body=Hello%2C%20I%20would%20like%20to%20request%20a%20ride.';
 const ctaPhoneNumberSMSValue = 'Text (714) 317-4740';
