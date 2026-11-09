@@ -55,8 +55,9 @@ a {
 .brand span {
   display: flex;
   flex-direction: column;
+  gap: 4px;
   color: var(--navy);
-  line-height: 1;
+  line-height: 1.2;
 }
 .brand strong {
   font-family: 'DM Sans', sans-serif;
@@ -66,7 +67,8 @@ a {
   font-size: 10px;
   text-transform: uppercase;
   letter-spacing: 2.4px;
-  margin-top: 5px;
+  margin-top: 0px;
+  line-height: 1.3;
 }
 
 .brand-logo {
@@ -825,6 +827,18 @@ footer div {
   margin: 5px;
 }
 
+/* Media Queries */
+
+
+@media (max-width: 560px) {
+  .brand small {
+    font-size: 8px;
+    letter-spacing: 0.6px;
+    line-height: 1.2;
+  }
+}
+
+
 /* show logo display based on screen width > 901  , (max-width: 900px) {*/
 @media (min-width: 901px) {
   .brand-logo-dark {
@@ -846,6 +860,7 @@ footer div {
   .header-call span {
     color: #fff;
   }
+  
   .header-call {
     border-left-color: rgba(255,255,255,.35);
   }
@@ -881,6 +896,7 @@ footer div {
     gap: 20px;
     box-shadow: 0 12px 20px rgba(0,0,0,.08);
   }
+ 
   .main-nav.open {
     display: flex;
   }
@@ -892,9 +908,7 @@ footer div {
     width: 48px;
     height: 48px;
   }
-  .header-call {
-    display: none;
-  }
+
   .hero {
     margin-top: 78px;
     height: 620px;
@@ -956,6 +970,13 @@ footer div {
     gap: 20px;
   }
 }
+ 
+@media(max-width: 918px) {
+  .header-call {
+    display: none !important;
+  }  
+}
+
 @media(max-width:560px) {
   .email-modal-panel {
     width: calc(100vw - 32px);
@@ -1034,8 +1055,8 @@ footer div {
   .cta-actions .button {
     max-width: none;
   }
-  .footer-brand {
-    display: none;
+   .footer-brand > span {
+    text-align: left;
   }
   footer {
     justify-content: center;
@@ -1048,4 +1069,28 @@ footer div {
 .footer-brand strong,
 .footer-brand small {
   color: #000;
+}
+
+.brand-logo-white-footer {
+  display: block;
+}
+
+.footer-para {
+  white-space: nowrap;
+}
+
+.footer-mobile-break {
+  display: none;
+}
+
+@media (max-width: 653px) {
+  footer {
+    flex-direction: column;
+  }
+  .footer-brand > span {
+    white-space: nowrap;
+  }
+  .footer-mobile-break {
+    display: block;
+  }
 }
