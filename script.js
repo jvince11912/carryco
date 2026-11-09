@@ -164,21 +164,39 @@ function waitForUserActivity(element) {
   document.addEventListener("pointermove", hideOverlay, { passive: true, once: true });
 }
 
-const heroContact = document.querySelector('#hero-call-or-text');
-const heroContactLabel = heroContact?.querySelector('.hero-contact-label');
+const headerContactHref = document.querySelector('#header-call-or-text');
+const heroContactHref = document.querySelector('#hero-call-or-text');
+const ctaContactHref = document.querySelector('#cta-call-or-text');
+
+const headerContactLabel = document.querySelector('.header-contact-label');
+const heroContactLabel = document.querySelector('.hero-contact-label');
+const ctaContactLabel = document.querySelector('.cta-contact-label'); 
+
+const ctaPhoneHrefTelValue =  '';
+const ctaPhoneNumberCallValue = 'Call (714) 317-4740';
+
+const ctaPhoneHrefSMSValue =  'sms:+17143174740?body=Hello%2C%20I%20would%20like%20to%20request%20a%20ride.';
+const ctaPhoneNumberSMSValue = 'Text (714) 317-4740';
+
 const phoneBreakpoint = window.matchMedia('(max-width: 900px)');
 
 function updateHeroContactLink() {
-  if (!heroContact || !heroContactLabel) return;
+  if (!heroContact || !heroContactLabel || !ctaCallOrText) return;
 
   if (phoneBreakpoint.matches) {
-    heroContact.href =
-      //'sms:+17143174740?body=Hello%2C%20I%20would%20like%20to%20request%20a%20ride.';
-      'sms://+15623203552?body=Hello%2C%20I%20would%20like%20to%20request%20a%20ride.';
-    heroContactLabel.textContent = 'Text (562) 320-3552';
+     headerContactHref.href = ctaPhoneHrefSMSValue;
+     headerContactLabel.textContent = ctaPhoneNumberSMSValue;
+     heroContactHref.href = ctaPhoneHrefSMSValue;
+     heroContactLabel.textContent = ctaPhoneNumberSMSValue;
+     ctaContactHref.href = ctaPhoneHrefSMSValue;
+     ctaContactLabel.textContent = ctaPhoneNumberSMSValue; 
   } else {
-    heroContact.href =  'sms://+15623203552?body=Hello%2C%20I%20would%20like%20to%20request%20a%20ride.';
-    heroContactLabel.textContent = 'Text (714) 317-4740';
+    heroContactHref.href =  ctaPhoneHrefTelValue;
+    headerContactHref.href =  ctaPhoneHrefTelValue;
+    ctaContactHref.href =  ctaPhoneHrefTelValue;
+    headerContactLabel.textContent = ctaPhoneNumberCallValue;
+    heroContactLabel.textContent = ctaPhoneNumberCallValue;
+    ctaContactLabel.textContent = ctaPhoneNumberCallValue;     
   }
 }
 
